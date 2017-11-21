@@ -1,5 +1,6 @@
 var path = require('path')
-var webpack = require('webpack')
+var webpack = require('webpack');
+var staticResources = 'static/';
 
 module.exports = {
   entry: './src/main.js',
@@ -61,17 +62,24 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.(png|jpg|gif|svg)$/,
+        test: /\.(png|jpg|gif)$/,
         loader: 'file-loader',
         options: {
-          name: '[name].[ext]?[hash]'
+          name: staticResources + 'img/[name].[ext]?[hash]'
         }
+      },
+      {
+        test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+        loader: 'file-loader?name=' + staticResources + 'fonts/[name].[ext]'
       }
     ]
   },
   resolve: {
+    modules: ["node_modules"],
     alias: {
-      'vue$': 'vue/dist/vue.esm.js'
+      'vue$': 'vue/dist/vue.esm.js',
+      'styles': path.resolve(__dirname, './src/static/sass'),
+      'images': path.resolve(__dirname, './src/static/img')
     },
     extensions: ['*', '.js', '.vue', '.json']
   },
