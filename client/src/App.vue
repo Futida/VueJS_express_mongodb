@@ -2,7 +2,7 @@
   <div id="root">
     <b-navbar toggleable="md" type="dark" variant="dark" class="justify-start">
       <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
-      <b-navbar-brand class="ml-3" to="/" left> NavBar</b-navbar-brand>
+      <b-navbar-brand class="ml-3" to="/" left> Main </b-navbar-brand>
       <b-collapse is-nav id="nav_collapse">
         <b-navbar-nav class="ml-auto">
           <b-nav-item v-for="item in menuIcons" :key="item.title" :to="item.path">

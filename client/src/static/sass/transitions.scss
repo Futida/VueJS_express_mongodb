@@ -1,5 +1,5 @@
 .fade-enter-active, .fade-leave-active {
-  transition: opacity .3s
+  transition: opacity .2s
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
   opacity: 0
@@ -12,3 +12,11 @@
 .slide-left-enter-active, .slide-left-leave-active {
   transition: all .5s ease-in-out;
 }
+
+.change-enter-active, .change-leave-active {
+  transition: opacity .4s ease-in;
+}
+.change-enter, .change-leave-to /* .fade-leave-active in <2.1.8 */ {
+  opacity: 0
+}
+

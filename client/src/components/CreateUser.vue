@@ -1,31 +1,49 @@
 <template>
-  <div class="row">
-    <div class="col-xl-14 offset-4">
-      <b-form>
-        <b-form-group id="exampleInputGroup1"
-                      label="Email address:"
-                      label-for="exampleInput1">
-          <b-form-input id="exampleInput1"
-                        type="email" required
-                        placeholder="Enter email"
-                        v-model="userData.email"
-                        @input="email"
-          ></b-form-input>
-          <div v-if="flagCorrectEmail">ok</div>
-          <div v-else>no</div>
-        </b-form-group>
-        <b-form-group id="exampleInputGroup2"
-                      label="Your Name:" label-for="exampleInput2">
-          <b-form-input id="exampleInput2"
-                        type="text" required
-                        placeholder="Enter name"
-          ></b-form-input>
-        </b-form-group>
-        <b-button type="submit" variant="primary">Submit</b-button>
-        <b-button type="reset" variant="secondary">Reset</b-button>
-      </b-form>
-    </div>
-  </div>
+  <transition name="change">
+    <b-container fluid>
+      <b-row>
+        <b-col cols="6" offset="3">
+          <b-form class="mt-5">
+            <b-form-group id="exampleInputGroup1"
+                          label="Email address:"
+                          label-for="exampleInput1">
+              <b-form-input id="exampleInput1"
+                            type="email"
+                            required
+                            placeholder="Enter email"
+                            v-model="userData.email"
+                            @input="email"
+              ></b-form-input>
+              <div class="correct pl-2" v-if="flagCorrectEmail">Correct</div>
+              <div class="red pl-2" v-else>Incorrect</div>
+            </b-form-group>
+            <b-form-group id="exampleInputGroup2"
+                          label="Your Name:" label-for="exampleInput2">
+              <b-form-input id="exampleInput2"
+                            type="text"
+                            required
+                            placeholder="Enter name"
+                            v-model="userData.name"
+              ></b-form-input>
+            </b-form-group>
+            <b-form-group id="exampleInputGroup3"
+                          label="Your Last name:" label-for="exampleInput3">
+              <b-form-input id="exampleInput3"
+                            type="text"
+                            required
+                            placeholder="Enter Last name"
+                            v-model="userData.lastName"
+              ></b-form-input>
+            </b-form-group>
+            <div class="col-sm-12 d-flex justify-content-between p-0">
+              <b-button type="submit" variant="primary">Submit</b-button>
+              <b-button type="reset" variant="secondary">Reset</b-button>
+            </div>
+          </b-form>
+        </b-col>
+      </b-row>
+    </b-container>
+  </transition>
 </template>
 
 <script>
@@ -37,7 +55,7 @@
           lastName: '',
           email: ''
         },
-        flagCorrectEmail:''
+        flagCorrectEmail: ''
       }
     },
     methods: {
@@ -50,10 +68,16 @@
   }
 </script>
 
-<style>
-  .inputGroupError {
-    color: red !important;
+<style lang="scss">
+  @import '~styles/variables.scss';
+
+  .red {
+    color: $color-red;
   }
 
+  .correct {
+    color: green;
+    font-size: 14px;
+  }
 
 </style>
