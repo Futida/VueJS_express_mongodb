@@ -1,5 +1,4 @@
 <template>
-  <transition appear name="change" mode="out-in">
     <b-container fluid>
       <div class="main__title">
         <div class="main__title__content">
@@ -8,12 +7,11 @@
             Educational project
           </div>
           <div class="main__title__content-background">
-            <img src="../static/img/logo.png" alt="">
+            <img src="../static/img/logo.png">
           </div>
         </div>
       </div>
     </b-container>
-  </transition>
 </template>
 
 <script>
@@ -31,15 +29,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    align-content: center;
     &__content {
-      font-weight: bold;
-      font-size: 30px;
+      width: 400px;
+      height: 300px;
+      overflow: hidden;
       text-align: center;
-      line-height: 60px;
       &-text {
         color: $color-black-light;
+        line-height: 60px;
         position: relative;
+        font-weight: bold;
+        font-size: 30px;
+        margin-top: 80px;
         z-index: 2;
       }
       &-background {
