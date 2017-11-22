@@ -28,10 +28,28 @@ router.route('/').get(function(req, res) {
 });
 
 router.route('/delete/:id').get(function (req, res) {
-    console.log(req.params);
     users.findByIdAndRemove({_id: req.params.id}, function(err, item){
         if(err) res.json(err);
         else res.json('Successfully removed');
+    });
+});
+
+router.route('/update/:id').post(function (req, res) {
+    users.findById(req.params.id, function(err, item) {
+        if (!item)
+            return next(new Error('Could not load Document'));
+        else {
+            item.name = req.body.name;
+            item.lastName = req.body.lastName;
+            item.email = req.body.email;
+
+            item.save().then(item => {
+                res.json('Update complete');
+        })
+        .catch(err => {
+                res.status(400).send("unable to update the database");
+        });
+        }
     });
 });
 

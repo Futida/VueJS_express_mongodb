@@ -48,7 +48,7 @@
                       v-model="editUser.lastName"
         ></b-form-input>
       </b-form-group>
-      <b-btn class="mt-3" variant="outline-primary" block @click="hideEditModal">Edit</b-btn>
+      <b-button class="mt-3" variant="outline-primary" block  @click="updateUser(editUser._id)">Edit</b-button>
     </b-modal>
   </b-container>
 </template>
@@ -81,7 +81,11 @@
         this.$refs.editModal.show();
         this.editUser = { ...item };
       },
-      hideEditModal() {
+      updateUser(id) {
+        let uri = 'http://localhost:4000/users/update/' + id;
+        this.axios.post(uri, this.editUser).then(() => {
+          this.getUsers()
+        });
         this.$refs.editModal.hide();
       }
     }
