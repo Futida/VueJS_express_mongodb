@@ -1,6 +1,6 @@
 <template>
   <div id="root">
-    <b-navbar toggleable="md" type="dark" variant="dark" class="justify-start">
+    <b-navbar toggleable="md" type="dark" variant="dark" class="justify-content-start">
       <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
       <b-navbar-brand class="ml-3" to="/" left> Main </b-navbar-brand>
       <b-collapse is-nav id="nav_collapse">

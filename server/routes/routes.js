@@ -10,10 +10,10 @@ router.route('/add').post(function(req, res) {
     user.save()
         .then(item => {
         res.status(200).json({'item': 'Item added successfully'});
-})
-.catch(err => {
-        res.status(400).send("unable to save to database");
-});
+        })
+        .catch(err => {
+                res.status(400).send("unable to save to database");
+        });
 });
 
 router.route('/').get(function(req, res) {

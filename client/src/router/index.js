@@ -7,7 +7,7 @@ const routes = [
   { path: '/create', component: CreateUser },
   { path: '/list-users', component: ListUsers },
   { path: '/', component: Home },
-  //{ path: '/*', redirect: '/' }
+  { path: '/*', redirect: '/' }
 ];
 
 export default new VueRouter({

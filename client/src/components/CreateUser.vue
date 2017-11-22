@@ -1,7 +1,7 @@
 <template>
   <b-container>
     <b-row>
-      <b-col cols="6" offset="3">
+      <b-col cols="12" sm="12" md="8" lg="6" offset-md="2">
         <b-form @submit.prevent="createUser" class="mt-5">
           <b-form-group id="exampleInputGroup1"
                         label="Email address:"

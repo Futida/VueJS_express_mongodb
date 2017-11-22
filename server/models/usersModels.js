@@ -11,6 +11,10 @@ var users = new Schema({
     },
     email: {
         type: String
+    },
+    date: {
+        type: String,
+        default: new Date()
     }
 }, {
     collection: 'users'
