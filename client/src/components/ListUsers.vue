@@ -8,7 +8,7 @@
       <th style="width:200px">Actions</th>
       </thead>
       <tbody>
-      <tr v-for="user in listUsers">
+      <tr v-for="user in listUsers.slice(sliceCountUsers.start,sliceCountUsers.end)">
         <td>{{user.name}}</td>
         <td>{{user.lastName}}</td>
         <td>{{user.email}}</td>
@@ -19,6 +19,12 @@
       </tr>
       </tbody>
     </table>
+    <Pagination :current="paginator.currentPage"
+                :total="this.listUsers.length"
+                :perPage="paginator.perPage"
+                @change="computedCountUsers">
+    </Pagination>
+
     <b-modal id="modaledit" title="Edit user" ref="editModal" hide-footer>
       <b-form-group id="exampleInputGroup1"
                     label="Edit Email address:"
@@ -54,15 +60,28 @@
 </template>
 
 <script>
+
+  import Pagination from './pagination/Pagination.vue'
+
   export default {
     data() {
       return {
         listUsers: [],
-        editUser: []
+        editUser: [],
+        paginator: {
+          currentPage: 1,
+          perPage: 5,
+        },
+        sliceCountUsers: {
+          start: 0,
+          end: 5
+        }
       }
     },
+
+    components: { Pagination },
     created() {
-      this.getUsers()
+      this.getUsers();
     },
     methods: {
       getUsers() {
@@ -87,6 +106,11 @@
           this.getUsers()
         });
         this.$refs.editModal.hide();
+      },
+      computedCountUsers(page) {
+        this.paginator.currentPage = page;
+        this.sliceCountUsers.end = (page * this.paginator.perPage);
+        this.sliceCountUsers.start = this.sliceCountUsers.end - this.paginator.perPage;
       }
     }
   }

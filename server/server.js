@@ -13,7 +13,6 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use('/users', routes);
 const port = 4000;
-
 const server = app.listen(port, function() {
     console.log('Listening on port ' + port);
 });
